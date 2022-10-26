@@ -1,42 +1,30 @@
 require 'pry'
 
 class Artist
-  attr_accessor :name
+  attr_accessor :name    #able to read and write the name 
   attr_reader :songs
-
+  extend Findable
+  extend Memorable::ClassMethods
+  include Paramable 
+  include Memorable::InstanceMethods
   @@artists = []
-
+ 
   def initialize
-    @@artists << self
+     super  # when creating a new artist yo add the artist to the artist array and  create an empty array for the artist
     @songs = []
   end
 
-  def self.find_by_name(name)
-    @@artists.detect{|a| a.name == name}
-  end
-
-  def self.all
+  def self.all     #getter method for the artists     to call it className.all    returns an array of all artists 
     @@artists
   end
 
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.count
-  end
 
   def add_song(song)
-    @songs << song
-    song.artist = self
+    @songs << song      # instance method to add a song to the artist
+    song.artist = self # setting an atrist for the song
   end
 
   def add_songs(songs)
     songs.each { |song| add_song(song) }
-  end
-
-  def to_param
-    name.downcase.gsub(' ', '-')
   end
 end

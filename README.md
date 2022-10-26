@@ -10,7 +10,7 @@
 In this lab, we have an `Artist` class and a `Song` class. `Artist`s have many
 songs and an individual instance of the `Song` class belongs to an artist.
 `Artist`s and `Song`s also have some familiar class methods that keep track of
-all of the instances of the class, count those instances and clear or reset
+all of the instances of the class, count those instances and clear or reset 
 them.
 
 Open up the `lib` directory and spend some time reviewing the code in
